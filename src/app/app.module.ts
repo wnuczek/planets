@@ -5,41 +5,49 @@ import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 import { AppComponent } from './app.component';
-import { MainComponent } from './main/main.component'
+import { MainComponent } from './main/main.component';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ListComponent } from './list/list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PlanetCardComponent } from './planet-card/planet-card.component';
+import { PaginatorComponent } from './paginator/paginator.component';
 
 const routes: Routes = [
   {
-    path: "**",
-    redirectTo:'main',
+    path: '**',
+    redirectTo: 'main',
 
   },
   {
-    path: "main",
-    component:MainComponent,
+    path: 'main',
+    component: MainComponent,
   }
 ];
 @NgModule({
    declarations: [
       AppComponent,
       MainComponent,
-      ListComponent
+      ListComponent,
+      PlanetCardComponent,
+      PaginatorComponent
    ],
    imports: [
       BrowserModule,
       BrowserAnimationsModule,
       HttpClientModule,
       ReactiveFormsModule,
-      //Angular Material Modules
+      // Angular Material Modules
       MatFormFieldModule,
       MatIconModule,
       MatInputModule,
+      MatProgressSpinnerModule,
+      MatButtonModule,
 
-      //Angular Flex
+      // Angular Flex
       FlexLayoutModule,
 
       RouterModule.forRoot(routes)

@@ -1,23 +1,17 @@
 :host{
   .main-wrapper{
-    width:800px;
-    height: 600px;
-    max-height: 95vh;
+    height: 95vh;
     max-width: 100vw;
     padding-top:40px;
     margin:auto;
-    border: 1px solid #696969;
-    border-radius: 5px;
-    .list-container{
-      min-width: 300px;
-      min-height: 300px;
-      border-radius:5px;
-      border: 1px solid #696969;
-    }
     mat-form-field{
       max-width: 300px;
     }
+    header{
+      height: 15vh;
+    }
+    .no-margin{
+      margin: 0;
+    }
   }
-
 }
-

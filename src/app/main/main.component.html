@@ -1,10 +1,19 @@
 <div class="main-wrapper" fxLayout="column" fxLayoutAlign="start center">
-  <mat-form-field appearance="standard" >
-    <input matInput #searchInput type="text" [formControl]="searchForm" (keyup)="onSearchValueChanges(searchInput)"  placeholder="Szukaj">
-    <mat-icon matSuffix svgIcon="search" class="search-icon" ></mat-icon>
-  </mat-form-field>
 
-    <app-list [planetsList]="list"></app-list>
+  <header fxLayout="column" fxLayoutAlign="start center">
 
+    <h1 class="no-margin">Planets list</h1>
+
+    <mat-form-field appearance="standard">
+      <input matInput #searchInput type="text"
+        [formControl]="searchForm"
+        (keyup)="onSearchValueChanges(searchInput)"
+        placeholder="Search planets">
+      <mat-icon matSuffix svgIcon="search" class="search-icon" ></mat-icon>
+    </mat-form-field>
+
+  </header>
+
+  <app-list [planetsList]="planetsPage$" (pageChange)="onPageChanged($event)" ></app-list>
 
 </div>

@@ -3,5 +3,17 @@
 body{
   padding:0px;
   margin:0px;
-  background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(172,139,173,1) 83%, rgba(172,139,173,1) 100%);
+  background: #c7c7c7;
+  font-family: 'Roboto', sans-serif;
+  color: #333
+}
+.full-width {
+  min-width: 100%;
+}
+::-webkit-scrollbar{
+  width: 10px;
+  background-color: rgba(255,255,255,.2);
+}
+::-webkit-scrollbar-thumb{
+  background-color: rgb(63,81,181);
 }

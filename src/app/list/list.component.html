@@ -1,9 +1,27 @@
-<div class="main-wrapper">
-  <div *ngFor="let item of planetsList" fxLayout="row" fxLayoutGap="10px">
-     <div>{{item.name}}</div>
-     <div>{{item.climate}}</div>
-     <div>{{item.terrain}}</div>
-     <div>{{item.diameter}}</div>
-     <div>{{item.gravity}}</div>
+<div class="main-wrapper" *ngIf="(planetsList | async) as planetsList; else loading">
+
+  <div class="fixed-height" fxLayout="row wrap">
+
+    <div *ngFor="let item of planetsList.results" 
+      class="planet" 
+      fxFlex.lt-sm="0 0 calc(100% - 5px * 2)" 
+      fxFlex.gt-md="0 0 calc(50% - 5px * 2)" 
+      fxLayout="column"  
+      fxLayoutAlign="flex-start flex-start" 
+      fxLayoutGap="0px">
+
+      <planet-card [planet]="item" class="full-width"></planet-card>
+
+    </div>
+
   </div>
+
+  <app-paginator [planetsList]="planetsList" (pageToLoad)="onPageChanged($event)"></app-paginator>
+
 </div>
+
+<ng-template #loading>
+  <div class="fixed-height no-scroll" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

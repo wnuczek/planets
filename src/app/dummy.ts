@@ -226,10 +226,10 @@ export const dummyData = JSON.parse(`{
 }`)
 
 
-export interface Dummy {
+export interface Page {
   count:    number;
   next:     string;
-  previous: null;
+  previous: string;
   results:  Planet[];
 }
 

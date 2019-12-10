@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Planet } from '../dummy';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Page } from '../dummy';
 
 @Component({
   selector: 'app-list',
@@ -7,10 +7,14 @@ import { Planet } from '../dummy';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-@Input() planetsList: Planet[] = [];
+@Input() planetsList: Page;
+@Output() pageChange = new EventEmitter<string>();
+
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
+  onPageChanged(value) {
+    this.pageChange.emit(value);
+  }
 }

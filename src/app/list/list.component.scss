@@ -1,5 +1,30 @@
 :host{
   .main-wrapper{
-    width:80%;
+    margin: 0 10px;
+    width: 95vw;
+    @media screen and (min-width: 768px) {
+      width: 80vw;
+      max-width: 960px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 55vw;
+      max-width: 1200px;
+    }
+  }
+  .full-width {
+    min-width: 100%;
+  }
+  .fixed-height {
+    height: 70vh;
+    overflow-y: scroll;
+  }
+  .no-scroll {
+    overflow: hidden;
+  }
+  .planet {
+    width: 100%;
+    background: rgba(255,255,255,.2);
+    padding: 1rem;
+    margin: 5px;
   }
 }

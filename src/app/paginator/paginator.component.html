@@ -1,0 +1,11 @@
+<div fxLayout="row" fxLayoutAlign="center" class="pagination">
+
+    <button mat-button (click)="pageToLoad.emit(planetsList.previous)" [disabled]="!planetsList.previous" title="Previous page">
+        <i class="material-icons" aria-hidden="false" aria-label="Previous page">keyboard_arrow_left</i>
+    </button>
+
+    <button mat-button (click)="pageToLoad.emit(planetsList.next)" [disabled]="!planetsList.next" title="Next page">
+        <i class="material-icons" aria-hidden="false" aria-label="Next page">keyboard_arrow_right</i>
+    </button>
+    
+</div>

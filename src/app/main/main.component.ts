@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from './main.service';
-import { Planet } from '../dummy';
+import { Page } from '../dummy';
 import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -9,17 +11,28 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-  public list:Planet[] = [];
-  public searchForm:FormControl = new FormControl("")
+  public planetsPage$: Observable<Page>;
+  public searchForm: FormControl = new FormControl('');
+
   constructor(private _service: MainService) { }
 
   ngOnInit() {
-   this.list = this._service.list;
-   
+   this.planetsPage$ = this._service.getPlanetsPage(1);
   }
 
-  onSearchValueChanges(inputElement:HTMLInputElement){
+  onPageChanged (url: string) {
+    this.planetsPage$ = this._service.getPlanetsPageByURL(url);
+  }
 
+  onSearchValueChanges(inputElement: HTMLInputElement) {
+    this.searchForm.valueChanges
+    .pipe(
+      debounceTime(400),
+      distinctUntilChanged()
+    )
+    .subscribe(name => {
+      this.planetsPage$ = this._service.getPlanetsPageByName(name);
+    });
   }
 
 }
