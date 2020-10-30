@@ -15,6 +15,8 @@ import { ListComponent } from './list/list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PlanetCardComponent } from './planet-card/planet-card.component';
 import { PaginatorComponent } from './paginator/paginator.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { EnsureHttpsInterceptor } from './http-interceptor';
 
 const routes: Routes = [
   {
@@ -52,7 +54,13 @@ const routes: Routes = [
 
       RouterModule.forRoot(routes)
    ],
-   providers: [],
+   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: EnsureHttpsInterceptor,
+      multi: true
+    }
+   ],
    bootstrap: [
       AppComponent,
 
