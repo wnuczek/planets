@@ -14,7 +14,7 @@ interface Item{
 
 export class MainService {
 
-  apiURL = 'https://swapi.co/api/planets';
+  apiURL = 'https://swapi.dev/api/planets';
 
   constructor(private _httpClient: HttpClient) {}
 
